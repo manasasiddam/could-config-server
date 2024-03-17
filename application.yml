@@ -26,15 +26,20 @@ eureka:
        defaultZone: http://localhost:8761/eureka/
   instance:
     hostname: localhost
-  health:
-    circuitbreakers:
-      enabled: true
-   endpoint:
-     health:
-       show-details: always
+management:
+   endpoints:
+    web:
+     exposure:
+      include: health
+      health:
    tracing:
     sampling:
       probability: 1.0
+circuitbreakers:
+      enabled: true
+      endpoint:
+      health:
+       show-details: always
 resilience4j:
   retry:
     instances:
